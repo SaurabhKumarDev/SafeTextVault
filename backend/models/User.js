@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Mongoose library importing
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
@@ -33,4 +34,41 @@ const userScheme = new Schema({
 const User = mongoose.model('User', userScheme);
 User.createIndexes;
 
+=======
+// Mongoose library importing
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
+
+// We are coping the schema's from https://mongoosejs.com/docs/guide.html
+// This schema is used to define format of our data
+const userScheme = new Schema({
+    name: {
+        type: String,
+        required: true,
+    },
+    gender: {
+        type: String,
+        required: true,
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    password: {
+        type: String,
+        required: true,
+    },
+    date: { 
+        type: Date,
+        default: Date.now
+    }
+});
+
+// Line number 14 will not work properly beacuse it does not check any index for the email
+// For checking the indexes
+const User = mongoose.model('User', userScheme);
+User.createIndexes;
+
+>>>>>>> 5c139e9c2b9a072993d12efc6f18df2160f25ae4
 module.exports = User
